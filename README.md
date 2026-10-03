@@ -6,6 +6,13 @@ The Tester is responsable of implementing WatchWolf Test's protocols. This concr
 ## Compile
 Use Java **8**.
 
+## Release
+
+The Maven project version is `0.4.0`. Push a matching tag such as `v0.4.0` to build
+`watchwolf-tester-0.4.0.jar` and publish it with a SHA-256 checksum in a GitHub Release.
+The release build uses the POM's existing test skip setting; run the integration tests
+against a live WatchWolf setup separately.
+
 ### Dependencies
 - Maven's `org.junit.jupiter:junit-jupiter-engine:5.8.1`
 - Maven's `org.junit.jupiter:junit-jupiter-params:5.8.1`
