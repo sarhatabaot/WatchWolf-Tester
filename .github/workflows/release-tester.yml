@@ -1,8 +1,8 @@
 name: Release WatchWolf-Tester JAR
 
 on:
-  push:
-    tags: ['v*']
+  release:
+    types: [published]
 
 permissions:
   contents: write
@@ -21,18 +21,17 @@ jobs:
         run: mvn -B clean package
       - name: Check release tag against artifact version
         env:
-          RELEASE_TAG: ${{ github.ref_name }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
         run: |
           [[ "$RELEASE_TAG" == v* ]]
           version="${RELEASE_TAG#v}"
           test -s "target/watchwolf-tester-${version}.jar"
-      - name: Create Tester release with JAR and checksum
+      - name: Upload Tester JAR and checksum to published release
         env:
           GH_TOKEN: ${{ github.token }}
-          RELEASE_TAG: ${{ github.ref_name }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
         run: |
           version="${RELEASE_TAG#v}"
           artifact="watchwolf-tester-${version}.jar"
           (cd target && sha256sum "$artifact" > "$artifact.sha256")
-          gh release create "$RELEASE_TAG" "target/$artifact" "target/$artifact.sha256" \
-            --verify-tag --title "$RELEASE_TAG" --generate-notes
+          gh release upload "$RELEASE_TAG" "target/$artifact" "target/$artifact.sha256"

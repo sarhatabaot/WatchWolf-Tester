@@ -8,8 +8,8 @@ Use Java **8**.
 
 ## Release
 
-The Maven project version is `0.4.0`. Push a matching tag such as `v0.4.0` to build
-`watchwolf-tester-0.4.0.jar` and publish it with a SHA-256 checksum in a GitHub Release.
+The Maven project version is `0.4.1`. Publish a matching GitHub Release such as `v0.4.1`
+through the UI to build `watchwolf-tester-0.4.1.jar` and attach it with a SHA-256 checksum.
 The release build uses the POM's existing test skip setting; run the integration tests
 against a live WatchWolf setup separately.
 
