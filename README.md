@@ -16,8 +16,8 @@ On Windows, use `gradlew.bat assemble`. The artifact is written to `build/libs/`
 
 ## Release
 
-The Gradle project version is `0.4.2`. Publish a matching GitHub Release such as `v0.4.2`
-through the UI to build `watchwolf-tester-0.4.2.jar` and attach it with a SHA-256 checksum.
+The Gradle project version is `0.4.3`. Publish a matching GitHub Release such as `v0.4.3`
+through the UI to build `watchwolf-tester-0.4.3.jar` and attach it with a SHA-256 checksum.
 Tests remain disabled during normal builds because they exercise a live WatchWolf setup. Run
 them explicitly with `bash ./gradlew test -PrunTests=true` against a configured environment.
 
